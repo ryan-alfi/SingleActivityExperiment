@@ -6,6 +6,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.apokpak.simplesingleactivity.fragments.FirstFragment;
+import com.apokpak.simplesingleactivity.fragments.SecondFragment;
+
 public class MainActivity extends AppCompatActivity implements FragmentNavigationListener{
 
     @Override
@@ -19,11 +22,14 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
     private void openFirstFragment(Bundle bundle) {
         FirstFragment fragmentSatu = new FirstFragment();
         fragmentSatu.setnavigationListener(this);
+        fragmentSatu.setArguments(bundle);
         commitFragment(fragmentSatu);
     }
 
     private void openSecondFragment(Bundle bundle) {
         SecondFragment fragmentDua = new SecondFragment();
+        fragmentDua.setnavigationListener(this);
+        fragmentDua.setArguments(bundle);
         commitFragment(fragmentDua);
     }
 
@@ -35,8 +41,8 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
     }
 
     @Override
-    public void openFragement(Bundle bundle, Fragment fragment) {
-
+    public void openFragement(Fragment fragment) {
+        commitFragment(fragment);
     }
 
     @Override
